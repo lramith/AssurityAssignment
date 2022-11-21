@@ -12,10 +12,10 @@
 
 ## Dependencies
 - Following dependencies are used in this project
-  - testng
-  - rest-assured
-  - jackson-databind
-  - log4j-1.2-api
+  - TestNG
+  - Rest Assured
+  - Jackson Databind
+  - Log4j 2 api
 
 ## Prerequisites
 Following dependencies should be installed before build and run the test suite.
@@ -23,7 +23,7 @@ Following dependencies should be installed before build and run the test suite.
 * Maven 3.8.x versions
 
 #### Execute the Test Suite
-1. Fist make sure the project is already built - Run the command `- mvn clean install -DskipTests=true` in terminal.
+1. Fist make sure the project is already built - Run the command `- mvn clean install -DskipTests=true` in terminal.(This might take some time around 2 min to download the dependencies during the fist execution)
 2. Execute the suite using `- mvn clean test -Pbvt -Dsuite=TestSuite` command in terminal. 
 3. Or you can run the test from the IDE
 

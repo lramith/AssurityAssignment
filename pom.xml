@@ -63,7 +63,6 @@
                                 <!--suppress UnresolvedMavenProperty -->
                                 <suiteXmlFile>./src/test/testSuites/${suite}.xml</suiteXmlFile>
                             </suiteXmlFiles>
-                            <forkMode>never</forkMode>
                         </configuration>
                     </plugin>
                 </plugins>

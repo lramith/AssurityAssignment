@@ -1,7 +1,7 @@
-package com.assurity.itemapi;
+package com.assurity.categoryapi;
 
 import com.assurity.TestBase;
-import com.assurity.data.Item;
+import com.assurity.data.Category;
 import com.assurity.data.Promotion;
 import com.assurity.functions.APIDetails;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,10 +14,10 @@ import java.util.List;
 
 public class APIVerificationTest extends TestBase {
     private SoftAssert softAssert;
-    private String itemId;
+    private String categoryId;
     private boolean categoryFlag;
     private String expectedPromotionName;
-    private String expectedItemName;
+    private String expectedCategoryName;
     private boolean expectedCanRelist;
     private String expectedDescription;
 
@@ -27,15 +27,15 @@ public class APIVerificationTest extends TestBase {
         softAssert = new SoftAssert();
     }
 
-    @Test(description = "Validate correct details are return from the Item API")
-    public void testAPIDetails() throws JsonProcessingException {
-        Item itemDataFromAPI = APIDetails.getDetailsFromItemAPI(itemId, categoryFlag);
+    @Test(description = "Validate correct details are return from the Category API")
+    public void testCategoryAPIDetails() throws JsonProcessingException {
+        Category categoryDataFromAPI = APIDetails.getDetailsFromCategoryAPI(categoryId, categoryFlag);
 
-        softAssert.assertEquals(itemDataFromAPI.getName(), expectedItemName, "Name returned from the API is not as expected");
-        softAssert.assertEquals(itemDataFromAPI.getCanRelist(), expectedCanRelist, "CanRelist returned from the API is not as expected");
+        softAssert.assertEquals(categoryDataFromAPI.getName(), expectedCategoryName, "Name returned from the API is not as expected");
+        softAssert.assertEquals(categoryDataFromAPI.getCanRelist(), expectedCanRelist, "CanRelist returned from the API is not as expected");
 
         List<String> listOfAvailablePromotions = new ArrayList<>();
-        for (Promotion promotion : itemDataFromAPI.getPromotions()) {
+        for (Promotion promotion : categoryDataFromAPI.getPromotions()) {
             String currentPromotion = promotion.getName();
             listOfAvailablePromotions.add(currentPromotion);
             if (currentPromotion.equals(expectedPromotionName)) {
@@ -50,11 +50,12 @@ public class APIVerificationTest extends TestBase {
 
     private void prepareTestData() {
         TestBase.setTestDataPath("APIVerification.properties");
-        itemId = TestBase.getTestData("ItemId");
+
+        categoryId = TestBase.getTestData("CategoryId");
         categoryFlag = Boolean.getBoolean(TestBase.getTestData("CategoryFlag"));
+        expectedCategoryName = TestBase.getTestData("Name");
+        expectedCanRelist = Boolean.parseBoolean(TestBase.getTestData("CanRelist"));
         expectedPromotionName = TestBase.getTestData("Promotion");
         expectedDescription = TestBase.getTestData("Description");
-        expectedItemName = TestBase.getTestData("Name");
-        expectedCanRelist = Boolean.parseBoolean(TestBase.getTestData("CanRelist"));
     }
 }

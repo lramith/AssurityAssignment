@@ -23,15 +23,15 @@ public class TestDataUtil {
      * @return value of the requested property
      */
     public static String getTestDataFromPropertyFile(String fileName, String propertyName) {
-        String TestData = "";
+        String testData = "";
         try {
             FileReader fileReader = new FileReader(fileName);
             Properties properties = new Properties();
             properties.load(fileReader);
-            TestData = properties.getProperty(propertyName);
+            testData = properties.getProperty(propertyName);
         } catch (IOException exception) {
             logger.error("Exception occurred while reading the file", exception);
         }
-        return TestData;
+        return testData;
     }
 }

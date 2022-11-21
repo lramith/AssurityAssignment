@@ -1,6 +1,6 @@
 # Assurity Consulting API Assignment
 
-**Description**:  This code base was created to address the API assignment allocated by Assurity Consulting
+**Description**:  This code base is created to address the test case provided in the API assignment
 
 ### Technology stack 
   - Java programing language
